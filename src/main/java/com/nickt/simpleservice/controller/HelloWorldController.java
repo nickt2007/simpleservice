@@ -12,7 +12,7 @@ public class HelloWorldController {
 
     @RequestMapping("/")
     String helloWorld() throws UnknownHostException {
-        return "Hello World!("+ InetAddress.getLocalHost().getHostAddress()+") " +
+        return "Hello K8s!("+ InetAddress.getLocalHost().getHostAddress()+") " +
                 "now(V4)=" + new Date().toLocaleString();
     }
 
