@@ -10,7 +10,7 @@ public class HelloWorldController {
 
     @RequestMapping("/")
     String helloWorld() {
-        return "Hello World! now()=" + new Date().toLocaleString();
+        return "Hello World! now(V2)=" + new Date().toLocaleString();
     }
 
 }
