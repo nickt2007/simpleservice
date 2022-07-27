@@ -1,0 +1,40 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: simplesvc-deployment
+  labels:
+    app: simplesvc-dp
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: simplesvc-app
+  template:
+    metadata:
+      labels:
+        app: simplesvc-app
+    spec:
+      containers:
+        - name: simplesvc-container
+          image: nickta/simpleservice:0.0.1-SNAPSHOT
+          ports:
+            - containerPort: 8080
+          env:
+            - name: TZ
+              value: Asia/Shanghai
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: simplesvc-service
+  labels:
+    app: simplesvc-svc
+spec:
+  type: LoadBalancer
+  selector:
+    app: simplesvc-app
+  ports:
+    - protocol: TCP
+      port: 9080
+      targetPort: 8080
